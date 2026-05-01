@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UK Renovation Co. — Expert Home Renovation in London</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+<style>
+/* ─────────────────────────────────────────────
+   RESET & ROOT
+───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F8F5F0;
+  color: #222;
+  overflow-x: hidden;
+}
+
+:root {
+  --cream:      #F8F5F0;
+  --cream2:     #F0EBE3;
+  --white:      #FDFCFA;
+  --stone:      #E2D9CE;
+  --sand:       #C8B99A;
+  --gold:       #B5883E;
+  --gold-lt:    #D4AA60;
+  --charcoal:   #1C1C1C;
+  --slate:      #2E2E2E;
+  --muted:      #6E6560;
+  --dark-bg:    #181614;
+  --dark-card:  #222018;
+  --dark-text:  #E8E2D8;
+  --radius:     4px;
+  --transition: 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+/* ─────────────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 3px; }
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────────── */
+h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.1; }
+p { line-height: 1.7; }
+
+/* ─────────────────────────────────────────────
+   UTILITY
+───────────────────────────────────────────── */
+.container { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+.gold { color: var(--gold); }
+.tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); border: 1px solid var(--gold);
+  padding: 6px 14px; border-radius: 2px; margin-bottom: 20px;
+}
+.tag-dark { color: var(--gold-lt); border-color: var(--gold-lt); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px; border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif; font-size: 12px;
+  font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: var(--transition); position: relative; overflow: hidden;
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(255,255,255,0.12); opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn:hover::after { opacity: 1; }
+.btn-gold { background: var(--gold); color: #fff; }
+.btn-gold:hover { background: #9E7332; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(181,136,62,0.35); }
+.btn-outline {
+  background: transparent; color: var(--charcoal);
+  border: 1.5px solid var(--charcoal);
+}
+.btn-outline:hover { background: var(--charcoal); color: #fff; transform: translateY(-2px); }
+.btn-outline-white {
+  background: transparent; color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.6);
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+/* ─────────────────────────────────────────────
+   FADE-IN ANIMATIONS
+───────────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left {
+  opacity: 0; transform: translateX(-50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right {
+  opacity: 0; transform: translateX(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* delay helpers */
+.d1 { transition-delay: 0.1s !important; }
+.d2 { transition-delay: 0.2s !important; }
+.d3 { transition-delay: 0.3s !important; }
+.d4 { transition-delay: 0.4s !important; }
+.d5 { transition-delay: 0.5s !important; }
+.d6 { transition-delay: 0.6s !important; }
+
+/* ─────────────────────────────────────────────
+   NAVIGATION
+───────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  padding: 28px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.5s ease;
+}
+nav.scrolled {
+  background: rgba(248,245,240,0.97);
+  backdrop-filter: blur(16px);
+  padding: 16px 60px;
+  box-shadow: 0 1px 0 var(--stone);
+}
+.nav-brand {
+  text-decoration: none;
+  display: flex; flex-direction: column; gap: 0;
+}
+.nav-brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: #fff;
+  transition: color 0.5s;
+}
+nav.scrolled .nav-brand-name { color: var(--charcoal); }
+.nav-brand-sub {
+  font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); margin-top: 2px;
+  transition: color 0.5s;
+}
+nav.scrolled .nav-brand-sub { color: var(--muted); }
+
+.nav-links {
+  display: flex; gap: 32px; list-style: none; align-items: center;
+}
+.nav-links a {
+  font-size: 11px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase;
+  color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 100%;
+  height: 1px; background: var(--gold);
+  transition: right 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold-lt); }
+.nav-links a:hover::after { right: 0; }
+nav.scrolled .nav-links a { color: var(--muted); }
+nav.scrolled .nav-links a:hover { color: var(--gold); }
+
+.nav-cta {
+  background: var(--gold) !important; color: #fff !important;
+  padding: 10px 22px; border-radius: 2px;
+  font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; transition: all 0.3s;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: #9E7332 !important; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(181,136,62,0.4); }
+
+/* Mobile hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  padding: 8px; background: none; border: none;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: #fff; transition: all 0.3s;
+}
+nav.scrolled .hamburger span { background: var(--charcoal); }
+
+/* ─────────────────────────────────────────────
+   HERO
+───────────────────────────────────────────── */
+#hero {
+  height: 100vh; min-height: 700px;
+  position: relative; display: flex; align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1a1612 0%, #2a211a 50%, #1c1a16 100%);
+}
+
+/* animated grain overlay */
+.hero-grain {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  animation: grain 8s steps(10) infinite;
+}
+@keyframes grain {
+  0%,100% { transform: translate(0,0); }
+  10% { transform: translate(-2%,-2%); }
+  20% { transform: translate(2%,2%); }
+  30% { transform: translate(-2%,2%); }
+  40% { transform: translate(2%,-2%); }
+  50% { transform: translate(-1%,1%); }
+  60% { transform: translate(1%,-1%); }
+  70% { transform: translate(-1%,-1%); }
+  80% { transform: translate(1%,1%); }
+  90% { transform: translate(-1%,0%); }
+}
+
+/* animated geometry */
+.hero-geo {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.hero-geo .circle1 {
+  position: absolute; right: -120px; top: 10%;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(181,136,62,0.12) 0%, transparent 70%);
+  animation: pulse1 6s ease-in-out infinite;
+}
+.hero-geo .circle2 {
+  position: absolute; left: -80px; bottom: -100px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(181,136,62,0.07) 0%, transparent 70%);
+  animation: pulse1 8s ease-in-out infinite reverse;
+}
+.hero-geo .line1 {
+  position: absolute; top: 0; right: 35%;
+  width: 1px; height: 100%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(181,136,62,0.2) 50%, transparent 100%);
+}
+@keyframes pulse1 {
+  0%,100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+/* floating image panels */
+.hero-panels {
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 45%; display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 3px; opacity: 0;
+  animation: fadeIn 1.2s ease 0.6s forwards;
+}
+@keyframes fadeIn { to { opacity: 1; } }
+.hero-panel {
+  overflow: hidden; background: #2a2520;
+}
+.hero-panel img {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.75; transition: opacity 0.5s, transform 8s ease;
+  transform: scale(1.08);
+  animation: slowZoom 12s ease-in-out infinite alternate;
+}
+@keyframes slowZoom {
+  from { transform: scale(1.08); }
+  to { transform: scale(1.0); }
+}
+.hero-panel:nth-child(1) { grid-row: 1/3; }
+.hero-panel:nth-child(3) { grid-row: 2/4; }
+.hero-panel img:hover { opacity: 0.9; }
+
+/* gold accent bar */
+.hero-accent {
+  position: absolute; left: 55%; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+  opacity: 0; animation: fadeIn 1s ease 1.5s forwards;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 580px; padding: 0 60px;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 28px;
+  opacity: 0; animation: slideUp 0.8s ease 0.3s forwards;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow-line {
+  width: 40px; height: 1px; background: var(--gold);
+}
+.hero-eyebrow-text {
+  font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-lt);
+}
+
+.hero-title {
+  font-size: clamp(44px, 5vw, 76px); font-weight: 300; color: #fff;
+  line-height: 1.05; margin-bottom: 12px;
+  opacity: 0; animation: slideUp 0.9s ease 0.5s forwards;
+}
+.hero-title em { font-style: italic; color: var(--gold-lt); }
+.hero-title strong { font-weight: 600; display: block; }
+
+.hero-subtitle {
+  font-size: clamp(20px, 2.5vw, 32px); font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  color: rgba(255,255,255,0.55); margin-bottom: 32px;
+  opacity: 0; animation: slideUp 0.9s ease 0.65s forwards;
+}
+
+.hero-desc {
+  font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.8;
+  max-width: 440px; margin-bottom: 44px;
+  opacity: 0; animation: slideUp 0.9s ease 0.8s forwards;
+}
+
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  opacity: 0; animation: slideUp 0.9s ease 0.95s forwards;
+}
+
+.hero-stats {
+  position: absolute; bottom: 48px; left: 60px; right: 60px;
+  display: flex; gap: 48px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 32px;
+  opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
+}
+.hero-stat {}
+.hero-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 600; color: var(--gold-lt);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); margin-top: 6px;
+}
+
+/* scroll indicator */
+.scroll-indicator {
+  position: absolute; bottom: 48px; right: 60px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeIn 1s ease 1.8s forwards;
+}
+.scroll-indicator span {
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); writing-mode: vertical-rl;
+}
+.scroll-line {
+  width: 1px; height: 60px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(0.7); }
+}
+
+/* ─────────────────────────────────────────────
+   MARQUEE TICKER
+───────────────────────────────────────────── */
+.marquee-bar {
+  background: var(--gold);
+  padding: 14px 0; overflow: hidden;
+}
+.marquee-track {
+  display: flex; white-space: nowrap;
+  animation: marquee 25s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-item {
+  display: inline-flex; align-items: center; gap: 24px;
+  padding: 0 32px;
+  font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  color: #fff;
+}
+.marquee-dot {
+  width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.5);
+}
+
+/* ─────────────────────────────────────────────
+   ABOUT SECTION
+───────────────────────────────────────────── */
+#about {
+  padding: 120px 0; background: var(--white);
+}
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+}
+.about-images {
+  position: relative; height: 600px;
+}
+.about-img-main {
+  position: absolute; left: 0; top: 0;
+  width: 78%; height: 88%;
+  overflow: hidden; border-radius: var(--radius);
+}
+.about-img-main img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
+.about-img-main:hover img { transform: scale(1.05); }
+.about-img-accent {
+  position: absolute; right: 0; bottom: 0;
+  width: 46%; height: 52%;
+  overflow: hidden; border-radius: var(--radius);
+  box-shadow: -8px -8px 0 var(--cream2);
+}
+.about-img-accent img { width: 100%; height: 100%; object-fit: cover; }
+.about-badge {
+  position: absolute; left: -24px; bottom: 120px;
+  background: var(--gold); color: #fff;
+  padding: 20px 24px; border-radius: var(--radius);
+  box-shadow: 0 20px 48px rgba(181,136,62,0.35);
+  z-index: 2;
+}
+.about-badge-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px; font-weight: 600; line-height: 1;
+}
+.about-badge-text {
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-top: 4px; opacity: 0.85;
+}
+.about-content {}
+.about-content .tag { margin-bottom: 16px; }
+.about-title {
+  font-size: clamp(34px, 3.5vw, 52px); font-weight: 300;
+  color: var(--charcoal); margin-bottom: 24px;
+  line-height: 1.1;
+}
+.about-title em { font-style: italic; color: var(--gold); }
+.about-text { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 16px; }
+.about-divider {
+  width: 48px; height: 2px; background: var(--gold); margin: 32px 0;
+}
+.about-highlights { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.about-hl {
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.about-hl-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--cream2); display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 16px;
+}
+.about-hl-text strong {
+  display: block; font-size: 14px; color: var(--charcoal);
+  font-weight: 600; margin-bottom: 2px;
+}
+.about-hl-text span { font-size: 13px; color: var(--muted); }
+
+/* ─────────────────────────────────────────────
+   PROCESS SECTION
+───────────────────────────────────────────── */
+#process {
+  padding: 120px 0;
+  background: var(--cream);
+}
+.process-header { text-align: center; margin-bottom: 80px; }
+.process-title {
+  font-size: clamp(34px, 3.5vw, 54px); font-weight: 300;
+  color: var(--charcoal);
+}
+.process-title em { font-style: italic; color: var(--gold); }
+.process-subtitle { font-size: 15px; color: var(--muted); margin-top: 16px; max-width: 560px; margin-inline: auto; }
+
+.process-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+}
+.route-card {
+  background: var(--white); padding: 60px;
+  position: relative; overflow: hidden;
+  transition: var(--transition);
+}
+.route-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s ease;
+}
+.route-card:hover::before { transform: scaleX(1); }
+.route-card:hover { transform: translateY(-4px); box-shadow: 0 32px 80px rgba(0,0,0,0.08); }
+
+.route-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px; font-weight: 300; color: var(--stone);
+  line-height: 1; margin-bottom: 24px; display: block;
+  transition: color 0.4s;
+}
+.route-card:hover .route-num { color: rgba(181,136,62,0.2); }
+.route-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px; display: block;
+}
+.route-title {
+  font-size: 26px; font-weight: 600; color: var(--charcoal);
+  margin-bottom: 8px;
+}
+.route-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
+.route-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.route-items li {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; color: var(--slate);
+}
+.route-items li::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   SERVICES
+───────────────────────────────────────────── */
+#services {
+  padding: 120px 0;
+  background: var(--dark-bg);
+}
+.services-header { text-align: center; margin-bottom: 72px; }
+.services-title {
+  font-size: clamp(34px, 3.5vw, 54px); font-weight: 300;
+  color: var(--dark-text);
+}
+.services-title em { font-style: italic; color: var(--gold-lt); }
+.services-subtitle { font-size: 15px; color: rgba(232,226,216,0.55); margin-top: 16px; }
+
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+}
+.service-card {
+  background: var(--dark-card);
+  padding: 48px 40px;
+  position: relative; overflow: hidden;
+  transition: var(--transition);
+  cursor: default;
+}
+.service-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(181,136,62,0.06) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.4s;
+}
+.service-card:hover { transform: translateY(-6px); }
+.service-card:hover::after { opacity: 1; }
+
+.service-icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 1px solid rgba(181,136,62,0.35);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 28px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.service-card:hover .service-icon {
+  border-color: var(--gold);
+  background: rgba(181,136,62,0.1);
+}
+.service-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600; color: var(--dark-text);
+  margin-bottom: 14px;
+}
+.service-desc { font-size: 14px; color: rgba(232,226,216,0.5); line-height: 1.75; }
+.service-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 24px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--gold-lt); text-decoration: none;
+  transition: gap 0.3s;
+}
+.service-link:hover { gap: 14px; }
+.service-link svg { width: 14px; height: 14px; }
+
+/* featured service - spans 2 cols */
+.service-featured {
+  grid-column: 1 / 3;
+  background: linear-gradient(135deg, #1e1a10 0%, #26210e 100%);
+  border: 1px solid rgba(181,136,62,0.2);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+}
+
+/* ─────────────────────────────────────────────
+   PROJECTS
+───────────────────────────────────────────── */
+#projects {
+  padding: 120px 0; background: var(--cream2);
+}
+.projects-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 56px;
+}
+.projects-title {
+  font-size: clamp(34px, 3.5vw, 52px); font-weight: 300; color: var(--charcoal);
+}
+.projects-title em { font-style: italic; color: var(--gold); }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  gap: 16px;
+}
+.project-card {
+  position: relative; overflow: hidden; border-radius: var(--radius);
+  cursor: pointer; background: var(--stone);
+}
+.project-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+  opacity: 0.6; transition: opacity 0.4s;
+}
+.project-card:hover::after { opacity: 0.9; }
+.project-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.project-card:hover img { transform: scale(1.06); }
+.project-info {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+  padding: 28px; transform: translateY(12px);
+  transition: transform 0.4s ease;
+}
+.project-card:hover .project-info { transform: translateY(0); }
+.project-cat {
+  font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 6px;
+}
+.project-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600; color: #fff; line-height: 1.2;
+}
+.project-loc { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+.pc1 { grid-column: 1/8; grid-row: 1; height: 400px; }
+.pc2 { grid-column: 8/13; grid-row: 1; height: 400px; }
+.pc3 { grid-column: 1/5; grid-row: 2; height: 320px; }
+.pc4 { grid-column: 5/9; grid-row: 2; height: 320px; }
+.pc5 { grid-column: 9/13; grid-row: 2; height: 320px; }
+
+/* ─────────────────────────────────────────────
+   KNOWLEDGE / BLOG
+───────────────────────────────────────────── */
+#blog {
+  padding: 120px 0; background: var(--charcoal);
+}
+.blog-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+}
+.blog-image {
+  position: relative; height: 540px;
+  overflow: hidden; border-radius: var(--radius);
+}
+.blog-image img { width: 100%; height: 100%; object-fit: cover; }
+.blog-image-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6));
+}
+.blog-image-quote {
+  position: absolute; bottom: 36px; left: 36px; right: 36px;
+  background: rgba(181,136,62,0.9); backdrop-filter: blur(8px);
+  padding: 24px 28px; border-radius: var(--radius);
+  font-family: 'Cormorant Garamond', serif; font-size: 20px;
+  font-style: italic; color: #fff; line-height: 1.4;
+}
+.blog-content {}
+.blog-title {
+  font-size: clamp(32px, 3vw, 48px); font-weight: 300;
+  color: var(--dark-text); line-height: 1.15; margin-bottom: 24px;
+}
+.blog-title em { font-style: italic; color: var(--gold-lt); }
+.blog-text { font-size: 15px; color: rgba(232,226,216,0.6); line-height: 1.85; margin-bottom: 16px; }
+.blog-cta-row { display: flex; gap: 16px; margin-top: 40px; }
+
+/* ─────────────────────────────────────────────
+   MAINTENANCE (DARK CARD)
+───────────────────────────────────────────── */
+#maintenance {
+  padding: 120px 0; background: var(--cream);
+}
+.maintenance-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.maintenance-content {}
+.maintenance-title {
+  font-size: clamp(34px, 3.5vw, 52px); font-weight: 300; color: var(--charcoal); margin-bottom: 24px;
+}
+.maintenance-title em { font-style: italic; color: var(--gold); }
+.maintenance-text { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 32px; }
+.maintenance-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+.m-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 1px;
+  color: var(--charcoal); background: var(--stone);
+  padding: 8px 16px; border-radius: 20px;
+}
+.maintenance-visual {
+  position: relative; height: 520px;
+}
+.maintenance-card {
+  position: absolute; border-radius: var(--radius); overflow: hidden;
+}
+.maintenance-card img { width: 100%; height: 100%; object-fit: cover; }
+.mc1 { left: 0; top: 0; width: 70%; height: 65%; }
+.mc2 { right: 0; top: 15%; width: 50%; height: 55%; box-shadow: -6px -6px 0 var(--cream2); }
+.mc3 {
+  left: 10%; bottom: 0; width: 80%; height: 42%;
+  background: var(--dark-bg); display: flex; align-items: center; padding: 28px;
+  border-left: 3px solid var(--gold);
+}
+.offer-badge-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; color: var(--gold-lt); line-height: 1.3; font-style: italic;
+}
+.offer-badge-sub {
+  font-size: 12px; color: rgba(232,226,216,0.6); margin-top: 8px; line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────────
+   WHY US
+───────────────────────────────────────────── */
+#why {
+  padding: 120px 0; background: var(--white);
+}
+.why-header { text-align: center; margin-bottom: 72px; }
+.why-title {
+  font-size: clamp(34px, 3.5vw, 54px); font-weight: 300; color: var(--charcoal);
+}
+.why-title em { font-style: italic; color: var(--gold); }
+.why-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+}
+.why-card {
+  padding: 48px 40px;
+  border: 1px solid var(--stone); border-radius: var(--radius);
+  transition: var(--transition); position: relative; overflow: hidden;
+}
+.why-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(181,136,62,0.04) 0%, transparent 50%);
+  opacity: 0; transition: opacity 0.4s;
+}
+.why-card:hover::before { opacity: 1; }
+.why-card:hover {
+  border-color: rgba(181,136,62,0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.07);
+}
+.why-icon {
+  font-size: 32px; margin-bottom: 24px; display: block;
+}
+.why-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 600; color: var(--charcoal);
+  margin-bottom: 14px;
+}
+.why-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
+
+/* ─────────────────────────────────────────────
+   PARTNERS
+───────────────────────────────────────────── */
+#partners {
+  padding: 80px 0; background: var(--cream2);
+  border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone);
+}
+.partners-label {
+  text-align: center; font-size: 10px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 48px;
+}
+.partners-row {
+  display: flex; justify-content: center; align-items: center;
+  gap: 80px; flex-wrap: wrap;
+}
+.partner-item {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  opacity: 0.6; transition: opacity 0.3s, transform 0.3s;
+  cursor: default;
+}
+.partner-item:hover { opacity: 1; transform: scale(1.05); }
+.partner-icon {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--stone); display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+.partner-name {
+  font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--charcoal);
+}
+
+/* ─────────────────────────────────────────────
+   REVIEWS
+───────────────────────────────────────────── */
+#reviews {
+  padding: 120px 0; background: var(--white);
+}
+.reviews-header { text-align: center; margin-bottom: 72px; }
+.reviews-title {
+  font-size: clamp(34px, 3.5vw, 54px); font-weight: 300; color: var(--charcoal);
+}
+.reviews-title em { font-style: italic; color: var(--gold); }
+.reviews-rating {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-top: 20px;
+}
+.stars { font-size: 20px; color: var(--gold); letter-spacing: 4px; }
+.rating-text { font-size: 13px; color: var(--muted); }
+
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+}
+.review-card {
+  background: var(--cream); border-radius: var(--radius);
+  padding: 40px; position: relative; overflow: hidden;
+  transition: var(--transition);
+}
+.review-card::before {
+  content: '"'; position: absolute; top: -10px; right: 24px;
+  font-family: 'Cormorant Garamond', serif; font-size: 120px;
+  color: var(--stone); line-height: 1; pointer-events: none;
+}
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.07);
+}
+.review-stars { font-size: 14px; color: var(--gold); letter-spacing: 2px; margin-bottom: 20px; }
+.review-text {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 20px; color: var(--slate); line-height: 1.5; margin-bottom: 28px;
+}
+.review-author {
+  display: flex; align-items: center; gap: 14px;
+}
+.review-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--gold); display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: #fff;
+}
+.review-name { font-weight: 600; font-size: 14px; color: var(--charcoal); }
+.review-source { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+.reviews-cta { text-align: center; margin-top: 56px; }
+
+/* ─────────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────────── */
+#contact {
+  padding: 120px 0; background: var(--dark-bg);
+}
+.contact-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start;
+}
+.contact-info {}
+.contact-title {
+  font-size: clamp(34px, 3.5vw, 52px); font-weight: 300;
+  color: var(--dark-text); margin-bottom: 24px; line-height: 1.1;
+}
+.contact-title em { font-style: italic; color: var(--gold-lt); }
+.contact-text { font-size: 15px; color: rgba(232,226,216,0.55); line-height: 1.85; margin-bottom: 48px; }
+
+.contact-details { display: flex; flex-direction: column; gap: 28px; }
+.contact-item {
+  display: flex; align-items: flex-start; gap: 20px;
+}
+.contact-item-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid rgba(181,136,62,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.contact-item-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 4px;
+}
+.contact-item-val {
+  font-size: 16px; color: var(--dark-text); font-weight: 400;
+}
+.contact-item-val a { color: inherit; text-decoration: none; }
+.contact-item-val a:hover { color: var(--gold-lt); }
+.contact-item-sub { font-size: 13px; color: rgba(232,226,216,0.45); margin-top: 2px; }
+
+/* form */
+.contact-form {}
+.form-title {
+  font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 32px; padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.form-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(232,226,216,0.5);
+}
+.form-input, .form-textarea {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius); padding: 14px 18px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  color: var(--dark-text); outline: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--gold);
+  background: rgba(181,136,62,0.05);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(232,226,216,0.25); }
+.form-textarea { min-height: 140px; resize: vertical; }
+.form-submit {
+  width: 100%; padding: 16px; margin-top: 8px;
+  background: var(--gold); border: none; border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif; font-size: 12px;
+  font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  color: #fff; cursor: pointer; transition: var(--transition);
+}
+.form-submit:hover {
+  background: #9E7332; transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(181,136,62,0.35);
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+footer {
+  background: #0E0D0B; padding: 64px 0 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-inner {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px; margin-bottom: 60px;
+}
+.footer-brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: #fff; margin-bottom: 6px;
+}
+.footer-brand-reg {
+  font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.3); margin-bottom: 20px;
+}
+.footer-brand-desc {
+  font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.8; max-width: 280px;
+}
+.footer-col-title {
+  font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 20px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--gold-lt); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 28px; display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-socials { display: flex; gap: 16px; }
+.social-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.5); font-size: 14px; text-decoration: none;
+  transition: var(--transition);
+}
+.social-btn:hover {
+  border-color: var(--gold); color: var(--gold-lt);
+  transform: translateY(-2px);
+}
+
+/* ─────────────────────────────────────────────
+   MOBILE NAV OVERLAY
+───────────────────────────────────────────── */
+.mobile-nav {
+  position: fixed; inset: 0; z-index: 1100;
+  background: rgba(248,245,240,0.99); backdrop-filter: blur(20px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 32px; transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.77,0,0.175,1);
+}
+.mobile-nav.open { transform: translateX(0); }
+.mobile-nav a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px; font-weight: 300; color: var(--charcoal);
+  text-decoration: none; letter-spacing: 2px;
+  transition: color 0.3s; text-align: center;
+}
+.mobile-nav a:hover { color: var(--gold); }
+.mobile-close {
+  position: absolute; top: 28px; right: 28px;
+  background: none; border: none; font-size: 28px;
+  cursor: pointer; color: var(--charcoal); padding: 8px;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  nav { padding: 20px 32px; }
+  nav.scrolled { padding: 14px 32px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-panels { width: 40%; }
+  .hero-content { padding: 0 32px; }
+  .hero-stats { left: 32px; right: auto; gap: 32px; }
+  .about-grid { grid-template-columns: 1fr; gap: 60px; }
+  .about-images { height: 400px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .service-featured { grid-column: 1 / -1; grid-template-columns: 1fr; }
+  .blog-inner { grid-template-columns: 1fr; gap: 48px; }
+  .maintenance-inner { grid-template-columns: 1fr; gap: 48px; }
+  .maintenance-visual { height: 400px; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .contact-inner { grid-template-columns: 1fr; gap: 60px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .container { padding: 0 24px; }
+}
+@media (max-width: 768px) {
+  .hero-panels { display: none; }
+  .hero-content { padding: 0 24px; max-width: 100%; }
+  .hero-accent { display: none; }
+  .hero-stats { flex-wrap: wrap; gap: 24px; bottom: 32px; left: 24px; }
+  .scroll-indicator { display: none; }
+  .process-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+  .pc1 { grid-column: 1/-1; } .pc2 { grid-column: 1/-1; height: 280px; }
+  .pc3,.pc4,.pc5 { grid-column: span 1; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .projects-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .footer-inner { grid-template-columns: 1fr; }
+  #hero { height: auto; min-height: 100vh; padding-top: 120px; padding-bottom: 100px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── MOBILE NAV ─── -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#projects">Projects</a>
+  <a href="#process">Process</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact" style="color:var(--gold)">Get a Quote</a>
+</div>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-name">UK Renovation</div>
+    <div class="nav-brand-sub">Expert Home Renovation · London</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-geo">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="line1"></div>
+  </div>
+
+  <!-- image mosaic -->
+  <div class="hero-panels">
+    <div class="hero-panel">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Modern Living Room" />
+    </div>
+    <div class="hero-panel">
+      <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&q=80" alt="Kitchen" />
+    </div>
+    <div class="hero-panel">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Bathroom" />
+    </div>
+  </div>
+
+  <div class="hero-accent"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">London's Premier Renovation Specialists</span>
+    </div>
+    <h1 class="hero-title">
+      <em>Better Homes</em>
+      <strong>Start With<br>Better Decisions</strong>
+    </h1>
+    <p class="hero-subtitle">Renovation in London — Done Properly</p>
+    <p class="hero-desc">
+      A living space becomes safe, meaningful, and ready for growth
+      when architecture is allowed to truly shape it. We serve West,
+      North &amp; Central London exclusively.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-gold">Get Free Consultation</a>
+      <a href="#projects" class="btn btn-outline-white">View Our Work</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">150+</div>
+      <div class="hero-stat-label">Projects Completed</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">5★</div>
+      <div class="hero-stat-label">Google Rating</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">10+</div>
+      <div class="hero-stat-label">Years Experience</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">100%</div>
+      <div class="hero-stat-label">Certified Trades</div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <!-- repeated twice for seamless loop -->
+    <span class="marquee-item">Full Building Renovation <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Interior Design &amp; Architecture <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Sectional Renovation <span class="marquee-dot"></span></span>
+    <span class="marquee-item">New Build Construction <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Land Development <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Property Maintenance <span class="marquee-dot"></span></span>
+    <span class="marquee-item">West · North · Central London <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Full Building Renovation <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Interior Design &amp; Architecture <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Sectional Renovation <span class="marquee-dot"></span></span>
+    <span class="marquee-item">New Build Construction <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Land Development <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Property Maintenance <span class="marquee-dot"></span></span>
+    <span class="marquee-item">West · North · Central London <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images reveal-left">
+        <div class="about-img-main">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80" alt="Luxury Renovation" />
+        </div>
+        <div class="about-img-accent">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Interior Detail" />
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">5★</div>
+          <div class="about-badge-text">Google Verified</div>
+        </div>
+      </div>
+      <div class="about-content reveal-right">
+        <div class="tag">About UK Renovation Co.</div>
+        <h2 class="about-title">Transforming Spaces With <em>Precision &amp; Passion</em></h2>
+        <p class="about-text">At UK Renovation, we transform spaces with precision, passion, and certified expertise — delivering high-end renovation and construction services across London.</p>
+        <p class="about-text">Our team of architects, designers, and certified engineers specialise in bespoke solutions tailored to your property's full potential.</p>
+        <div class="about-divider"></div>
+        <div class="about-highlights">
+          <div class="about-hl">
+            <div class="about-hl-icon">🏛️</div>
+            <div class="about-hl-text">
+              <strong>Architect-Led Design</strong>
+              <span>Every project starts with a fully qualified architectural plan.</span>
+            </div>
+          </div>
+          <div class="about-hl">
+            <div class="about-hl-icon">⚡</div>
+            <div class="about-hl-text">
+              <strong>Certified Professionals Only</strong>
+              <span>Electricians, plumbers, carpenters, tilers — all fully qualified.</span>
+            </div>
+          </div>
+          <div class="about-hl">
+            <div class="about-hl-icon">📍</div>
+            <div class="about-hl-text">
+              <strong>London Exclusive</strong>
+              <span>West, North &amp; Central London — deep local expertise, every time.</span>
+            </div>
+          </div>
+          <div class="about-hl">
+            <div class="about-hl-icon">🏢</div>
+            <div class="about-hl-text">
+              <strong>Registered Company</strong>
+              <span>UK Renovation Services Ltd — Company No. 16352364</span>
+            </div>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-gold">Start Your Renovation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section id="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <div class="tag">Our Method</div>
+      <h2 class="process-title">Renovation <em>Step by Step</em></h2>
+      <p class="process-subtitle">Two clear routes depending on what your project needs — no guesswork, no surprises.</p>
+    </div>
+    <div class="process-grid">
+      <div class="route-card reveal d1">
+        <span class="route-num">A</span>
+        <span class="route-label">Route A</span>
+        <h3 class="route-title">No Planning Permission</h3>
+        <p class="route-desc">Cosmetic and light renovation work that improves your home without requiring council approval. Fast, focused, and efficient.</p>
+        <ul class="route-items">
+          <li>Interior redecoration &amp; painting</li>
+          <li>Kitchen &amp; bathroom refresh</li>
+          <li>Flooring replacement</li>
+          <li>Electrical &amp; plumbing updates</li>
+          <li>Loft &amp; room conversions</li>
+        </ul>
+      </div>
+      <div class="route-card reveal d2">
+        <span class="route-num">B</span>
+        <span class="route-label">Route B</span>
+        <h3 class="route-title">Planning Permission Required</h3>
+        <p class="route-desc">Structural and major changes that require council involvement. We handle the full process from design submission to final build.</p>
+        <ul class="route-items">
+          <li>Extensions &amp; additions</li>
+          <li>Structural wall removal</li>
+          <li>New build construction</li>
+          <li>Land &amp; property development</li>
+          <li>Change of use applications</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <div class="tag tag-dark">What We Do</div>
+      <h2 class="services-title">Our <em>Services</em></h2>
+      <p class="services-subtitle">End-to-end renovation solutions for London homes and properties.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card service-featured reveal d1">
+        <div>
+          <div class="service-icon" style="font-size:28px;">🏗️</div>
+          <h3 class="service-name" style="font-size:30px; margin-bottom:16px;">Full Building<br>Renovation</h3>
+          <p class="service-desc" style="font-size:15px; max-width:380px;">From concept to completion, we transform entire properties into stunning living spaces. Our architect-led team ensures a seamless process with exceptional craftsmanship at every stage.</p>
+          <a href="#contact" class="service-link" style="margin-top:32px;">
+            Get a Quote
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(181,136,62,0.2);border-radius:4px;padding:20px 24px;">
+            <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-lt);margin-bottom:8px;">Includes</div>
+            <div style="font-size:14px;color:rgba(232,226,216,0.6);line-height:1.8;">Design &amp; Planning · Structural Works · Fit-Out · Decorating · Final Snagging</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(181,136,62,0.2);border-radius:4px;padding:20px 24px;">
+            <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-lt);margin-bottom:8px;">Timeline</div>
+            <div style="font-size:14px;color:rgba(232,226,216,0.6);">6 – 24 weeks depending on scope</div>
+          </div>
+          <div style="background:rgba(181,136,62,0.1);border:1px solid rgba(181,136,62,0.3);border-radius:4px;padding:20px 24px;">
+            <div style="font-size:13px;color:var(--gold-lt);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:18px;">Smart planning + expert design + professional execution = guaranteed quality.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card reveal d1">
+        <div class="service-icon">🎨</div>
+        <h3 class="service-name">Interior Design &amp; Architecture</h3>
+        <p class="service-desc">Elevate your space with our bespoke interior design and architectural services. We bring your vision to life with precision and creativity.</p>
+        <a href="#contact" class="service-link">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card reveal d2">
+        <div class="service-icon">🔧</div>
+        <h3 class="service-name">Sectional Renovation</h3>
+        <p class="service-desc">Focused renovations for specific areas — kitchens, bathrooms, hallways. Enhance the functionality and aesthetics of key spaces.</p>
+        <a href="#contact" class="service-link">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card reveal d3">
+        <div class="service-icon">🏠</div>
+        <h3 class="service-name">New Build Construction</h3>
+        <p class="service-desc">Embark on your new construction project with confidence. Our experienced team handles every aspect, delivering quality and craftsmanship.</p>
+        <a href="#contact" class="service-link">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card reveal d4">
+        <div class="service-icon">🌿</div>
+        <h3 class="service-name">Land Development</h3>
+        <p class="service-desc">Unlock the potential of your land with our strategic development solutions. We guide you through the entire process, from planning to execution.</p>
+        <a href="#contact" class="service-link">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROJECTS ─── -->
+<section id="projects">
+  <div class="container">
+    <div class="projects-header">
+      <div class="reveal">
+        <div class="tag">Portfolio</div>
+        <h2 class="projects-title">Our <em>Projects</em></h2>
+      </div>
+      <a href="tel:07367365757" class="btn btn-outline reveal">📞 Call Us Today</a>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card pc1 reveal d1">
+        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=900&q=80" alt="Bathroom Renovation" />
+        <div class="project-info">
+          <div class="project-cat">Bathroom</div>
+          <div class="project-name">Bathroom Renovation</div>
+          <div class="project-loc">Ealing, W7</div>
+        </div>
+      </div>
+      <div class="project-card pc2 reveal d2">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=700&q=80" alt="Entrance Hallway" />
+        <div class="project-info">
+          <div class="project-cat">Hallway</div>
+          <div class="project-name">Entrance Hallway</div>
+          <div class="project-loc">Ealing, W13</div>
+        </div>
+      </div>
+      <div class="project-card pc3 reveal d1">
+        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80" alt="Loft" />
+        <div class="project-info">
+          <div class="project-cat">Loft</div>
+          <div class="project-name">Loft Renovation</div>
+          <div class="project-loc">Ealing, W7</div>
+        </div>
+      </div>
+      <div class="project-card pc4 reveal d2">
+        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&q=80" alt="Living Room" />
+        <div class="project-info">
+          <div class="project-cat">Living Room</div>
+          <div class="project-name">Living Room Redesign</div>
+          <div class="project-loc">Ealing, W13</div>
+        </div>
+      </div>
+      <div class="project-card pc5 reveal d3">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Kitchen" />
+        <div class="project-info">
+          <div class="project-cat">Kitchen</div>
+          <div class="project-name">Full Kitchen Remodel</div>
+          <div class="project-loc">Hammersmith, W6</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BLOG / KNOWLEDGE ─── -->
+<section id="blog">
+  <div class="container">
+    <div class="blog-inner">
+      <div class="blog-image reveal-left">
+        <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800&q=80" alt="Staircase Architecture" />
+        <div class="blog-image-overlay"></div>
+        <div class="blog-image-quote">
+          "Good decisions start with good knowledge."
+        </div>
+      </div>
+      <div class="blog-content reveal-right">
+        <div class="tag tag-dark">Knowledge Hub</div>
+        <h2 class="blog-title">Good Decisions Start With <em>Good Knowledge</em></h2>
+        <p class="blog-text">Most renovation mistakes begin long before construction starts — when decisions are made without the right knowledge.</p>
+        <p class="blog-text">The foundation of a successful outcome is access to clear, reliable, and practical information. Design choices, architectural style, budgeting, and contractor selection all depend on informed decisions made at the right time.</p>
+        <p class="blog-text">Without guidance, even well-intended projects can lead to costly compromises. Our insights help you plan better, decide with confidence, and build the right way.</p>
+        <div class="blog-cta-row">
+          <a href="#contact" class="btn btn-gold">Consult With Us</a>
+          <a href="tel:07367365757" class="btn btn-outline-white">📞 07367 365 757</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MAINTENANCE ─── -->
+<section id="maintenance">
+  <div class="container">
+    <div class="maintenance-inner">
+      <div class="maintenance-content reveal-left">
+        <div class="tag">Property Care</div>
+        <h2 class="maintenance-title">Ongoing <em>Maintenance</em> &amp; Special Offers</h2>
+        <p class="maintenance-text">At UK Renovation, we offer scheduled maintenance services for estate agents, landlords, and residential or commercial complexes. Reliable, professional care to keep your properties in top condition, year round.</p>
+        <div class="maintenance-tags">
+          <span class="m-tag">Estate Agents</span>
+          <span class="m-tag">Landlords</span>
+          <span class="m-tag">Residential</span>
+          <span class="m-tag">Commercial</span>
+          <span class="m-tag">Scheduled Visits</span>
+        </div>
+        <a href="tel:07367365757" class="btn btn-gold">📞 Call to Discuss</a>
+      </div>
+      <div class="maintenance-visual reveal-right">
+        <div class="maintenance-card mc1">
+          <img src="https://images.unsplash.com/photo-1600566752547-5c3b6a90d17b?w=700&q=80" alt="Property" />
+        </div>
+        <div class="maintenance-card mc2">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500&q=80" alt="Interior" />
+        </div>
+        <div class="maintenance-card mc3">
+          <div>
+            <div class="offer-badge-text">Special Offer Available<br>for New Clients</div>
+            <div class="offer-badge-sub">Get in touch to discuss tailored maintenance packages for your portfolio.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY US ─── -->
+<section id="why">
+  <div class="container">
+    <div class="why-header reveal">
+      <div class="tag">Why Choose Us</div>
+      <h2 class="why-title">Renovation — <em>Done Properly</em></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal d1">
+        <span class="why-icon">🏆</span>
+        <h3 class="why-name">Certified Professionals</h3>
+        <p class="why-desc">We work only with fully qualified, certified tradespeople — electricians, plumbers, carpenters, tilers, and decorators. No shortcuts, ever.</p>
+      </div>
+      <div class="why-card reveal d2">
+        <span class="why-icon">📐</span>
+        <h3 class="why-name">Architect-Led Projects</h3>
+        <p class="why-desc">Every project begins with proper architectural design and detailed planning. This is the foundation of every successful, high-quality renovation.</p>
+      </div>
+      <div class="why-card reveal d3">
+        <span class="why-icon">✅</span>
+        <h3 class="why-name">Clear Process</h3>
+        <p class="why-desc">Architectural design → detailed planning → skilled execution. Our structured approach eliminates stress and delivers predictable, outstanding results.</p>
+      </div>
+      <div class="why-card reveal d1">
+        <span class="why-icon">💬</span>
+        <h3 class="why-name">Transparent Communication</h3>
+        <p class="why-desc">From first call to final handover, you'll always know where your project stands. Clear timelines, honest pricing, no surprises.</p>
+      </div>
+      <div class="why-card reveal d2">
+        <span class="why-icon">📍</span>
+        <h3 class="why-name">London Specialists</h3>
+        <p class="why-desc">We work exclusively in London — West, North, and Central. Deep local knowledge of planning requirements, building regulations, and borough standards.</p>
+      </div>
+      <div class="why-card reveal d3">
+        <span class="why-icon">🔑</span>
+        <h3 class="why-name">Zero Stress Delivery</h3>
+        <p class="why-desc">We handle everything — from permits and design to the final coat of paint. You focus on your life; we focus on your home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PARTNERS ─── -->
+<section id="partners">
+  <div class="container">
+    <p class="partners-label reveal">Our Partners &amp; Accreditations</p>
+    <div class="partners-row reveal">
+      <div class="partner-item">
+        <div class="partner-icon">⚡</div>
+        <div class="partner-name">UK Electrician</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-icon">🏗️</div>
+        <div class="partner-name">Soheib Shayan</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-icon">🛡️</div>
+        <div class="partner-name">Tajan Ara</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-icon">🔒</div>
+        <div class="partner-name">Companies House</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-icon">⭐</div>
+        <div class="partner-name">Google Verified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REVIEWS ─── -->
+<section id="reviews">
+  <div class="container">
+    <div class="reviews-header reveal">
+      <div class="tag">Client Testimonials</div>
+      <h2 class="reviews-title">Trusted by Homeowners<br><em>Across London</em></h2>
+      <div class="reviews-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-text">Rated 5.0 on Google · Verified Reviews</span>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal d1">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Excellent quality work with a modern, clean finish. The project was delivered on time, with great professionalism, clear communication, and strong work ethic."</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Asaad Bagheri</div>
+            <div class="review-source">Google Review · Verified</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal d2">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"A professional, punctual, and detail-oriented team. The project was completed on time, within budget, and the final result exceeded expectations."</p>
+        <div class="review-author">
+          <div class="review-avatar">Z</div>
+          <div>
+            <div class="review-name">Zanyar Hesami</div>
+            <div class="review-source">Google Review · Verified</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal d3">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Modern design, flawless execution, and a highly professional team. Their honesty, politeness, and punctuality truly stood out throughout the project."</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-name">Seiran</div>
+            <div class="review-source">Google Review · Verified</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal d4">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Outstanding craftsmanship and truly modern design. Exceptional attention to detail, custom execution, and contemporary architectural quality throughout."</p>
+        <div class="review-author">
+          <div class="review-avatar">Z</div>
+          <div>
+            <div class="review-name">Zaza</div>
+            <div class="review-source">Google Review · Verified</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-cta reveal">
+      <a href="https://www.google.com/maps/place/UK+Renovation+Co." target="_blank" class="btn btn-outline">
+        View All Google Reviews ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-info reveal-left">
+        <div class="tag tag-dark">Get In Touch</div>
+        <h2 class="contact-title">Your Renovation Starts With <em>A Conversation</em></h2>
+        <p class="contact-text">Get a free consultation and expert advice for your project. We'll assess your needs, walk you through the process, and provide a clear, honest quote — with no obligation.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Call Us</div>
+              <div class="contact-item-val"><a href="tel:07367365757">07367 365 757</a></div>
+              <div class="contact-item-sub">Mon – Sat, 8am – 6pm</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Email Us</div>
+              <div class="contact-item-val"><a href="mailto:info@ukrenovation.co.uk">info@ukrenovation.co.uk</a></div>
+              <div class="contact-item-sub">We respond within 24 hours</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Areas We Cover</div>
+              <div class="contact-item-val">London — West, North &amp; Central</div>
+              <div class="contact-item-sub">Hammersmith, Ealing, Kensington, Islington &amp; more</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🏢</div>
+            <div>
+              <div class="contact-item-label">Company</div>
+              <div class="contact-item-val">UK Renovation Services Limited</div>
+              <div class="contact-item-sub">Company No. 16352364</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <div class="form-title">Free Consultation Request</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name *</label>
+            <input type="text" class="form-input" placeholder="John" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-input" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address *</label>
+          <input type="email" class="form-input" placeholder="john@example.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" class="form-input" placeholder="+44 7000 000000" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tell Us About Your Project</label>
+          <textarea class="form-textarea" placeholder="Describe what you're looking to renovate, your approximate budget, and your timeline..."></textarea>
+        </div>
+        <button class="form-submit" id="formSubmit">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">UK Renovation Co.</div>
+        <div class="footer-brand-reg">UK Renovation Services Ltd · No. 16352364</div>
+        <p class="footer-brand-desc">Expert renovation, architecture, and construction services across London — delivered with precision, passion, and certified expertise.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Full Building Renovation</a></li>
+          <li><a href="#services">Interior Design</a></li>
+          <li><a href="#services">Sectional Renovation</a></li>
+          <li><a href="#services">New Build</a></li>
+          <li><a href="#services">Land Development</a></li>
+          <li><a href="#maintenance">Maintenance</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Areas</div>
+        <ul class="footer-links">
+          <li><a href="#contact">West London</a></li>
+          <li><a href="#contact">North London</a></li>
+          <li><a href="#contact">Central London</a></li>
+          <li><a href="#contact">Hammersmith</a></li>
+          <li><a href="#contact">Ealing</a></li>
+          <li><a href="#contact">Greater London</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:07367365757">07367 365 757</a></li>
+          <li><a href="mailto:info@ukrenovation.co.uk">info@ukrenovation.co.uk</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Free Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 UK Renovation Services Limited. All rights reserved.</div>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" aria-label="Facebook">f</a>
+        <a class="social-btn" href="#" aria-label="Instagram">in</a>
+        <a class="social-btn" href="#" aria-label="Twitter">𝕏</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+/* NAV scroll */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* Mobile nav */
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const mobileClose = document.getElementById('mobileClose');
+hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+mobileNav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => mobileNav.classList.remove('open'));
+});
+
+/* Intersection Observer for reveal animations */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+  observer.observe(el);
+});
+
+/* Counter animation for hero stats */
+function animateCount(el, target, suffix) {
+  let current = 0;
+  const step = Math.ceil(target / 60);
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = current + suffix;
+    if (current >= target) clearInterval(timer);
+  }, 20);
+}
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const nums = entry.target.querySelectorAll('.hero-stat-num');
+      const data = [
+        { el: nums[0], val: 150, sfx: '+' },
+        { el: nums[1], val: 5,   sfx: '★' },
+        { el: nums[2], val: 10,  sfx: '+' },
+        { el: nums[3], val: 100, sfx: '%' },
+      ];
+      data.forEach(d => animateCount(d.el, d.val, d.sfx));
+      statsObserver.disconnect();
+    }
+  });
+}, { threshold: 0.5 });
+const heroStats = document.querySelector('.hero-stats');
+if (heroStats) statsObserver.observe(heroStats);
+
+/* Form submission */
+document.getElementById('formSubmit').addEventListener('click', function() {
+  this.textContent = '✓ Enquiry Sent!';
+  this.style.background = '#4a7c59';
+  setTimeout(() => {
+    this.textContent = 'Send Enquiry →';
+    this.style.background = '';
+  }, 3000);
+});
+
+/* Smooth parallax on hero panels */
+window.addEventListener('scroll', () => {
+  const panels = document.querySelector('.hero-panels');
+  if (panels) {
+    panels.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+  }
+});
+</script>
+</body>
+</html>
