@@ -90,6 +90,31 @@ p { line-height: 1.7; }
 .btn-outline-white:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 
 /* ─────────────────────────────────────────────
+   SINGLE-COLOR ICON SYSTEM
+───────────────────────────────────────────── */
+.icon-svg {
+  width: 24px; height: 24px;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.icon-svg svg {
+  width: 100%; height: 100%;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-svg.filled svg {
+  fill: var(--gold);
+  stroke: none;
+}
+.icon-lg { width: 32px; height: 32px; }
+.icon-xl { width: 40px; height: 40px; }
+.icon-2xl { width: 52px; height: 52px; }
+.icon-3xl { width: 60px; height: 60px; }
+
+/* ─────────────────────────────────────────────
    FADE-IN ANIMATIONS
 ───────────────────────────────────────────── */
 .reveal {
@@ -296,10 +321,6 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
 .hero-eyebrow-line {
   width: 40px; height: 1px; background: var(--gold);
 }
-.hero-eyebrow-text {
-  font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--gold-lt);
-}
 
 .hero-title {
   font-size: clamp(44px, 5vw, 76px); font-weight: 300; color: #fff;
@@ -325,24 +346,6 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
 .hero-actions {
   display: flex; gap: 16px; flex-wrap: wrap;
   opacity: 0; animation: slideUp 0.9s ease 0.95s forwards;
-}
-
-.hero-stats {
-  position: absolute; bottom: 48px; left: 60px; right: 60px;
-  display: flex; gap: 48px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 32px;
-  opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
-}
-.hero-stat {}
-.hero-stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px; font-weight: 600; color: var(--gold-lt);
-  line-height: 1;
-}
-.hero-stat-label {
-  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-  color: rgba(255,255,255,0.45); margin-top: 6px;
 }
 
 /* scroll indicator */
@@ -451,7 +454,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
 .about-hl-icon {
   width: 40px; height: 40px; border-radius: 50%;
   background: var(--cream2); display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 16px;
+  flex-shrink: 0;
 }
 .about-hl-text strong {
   display: block; font-size: 14px; color: var(--charcoal);
@@ -553,13 +556,14 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   width: 52px; height: 52px; border-radius: 50%;
   border: 1px solid rgba(181,136,62,0.35);
   display: flex; align-items: center; justify-content: center;
-  font-size: 22px; margin-bottom: 28px;
+  margin-bottom: 28px;
   transition: border-color 0.3s, background 0.3s;
 }
 .service-card:hover .service-icon {
   border-color: var(--gold);
   background: rgba(181,136,62,0.1);
 }
+.service-icon .icon-svg svg { stroke: var(--gold-lt); }
 .service-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 22px; font-weight: 600; color: var(--dark-text);
@@ -675,7 +679,7 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
 .blog-cta-row { display: flex; gap: 16px; margin-top: 40px; }
 
 /* ─────────────────────────────────────────────
-   MAINTENANCE (DARK CARD)
+   MAINTENANCE
 ───────────────────────────────────────────── */
 #maintenance {
   padding: 120px 0; background: var(--cream);
@@ -748,8 +752,9 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   box-shadow: 0 24px 64px rgba(0,0,0,0.07);
 }
 .why-icon {
-  font-size: 32px; margin-bottom: 24px; display: block;
+  margin-bottom: 24px; display: flex;
 }
+.why-icon .icon-svg svg { stroke: var(--gold); }
 .why-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 24px; font-weight: 600; color: var(--charcoal);
@@ -782,8 +787,8 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
 .partner-icon {
   width: 60px; height: 60px; border-radius: 50%;
   background: var(--stone); display: flex; align-items: center; justify-content: center;
-  font-size: 24px;
 }
+.partner-icon .icon-svg svg { stroke: var(--charcoal); }
 .partner-name {
   font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
   color: var(--charcoal);
@@ -867,8 +872,9 @@ nav.scrolled .hamburger span { background: var(--charcoal); }
   width: 48px; height: 48px; border-radius: 50%;
   border: 1px solid rgba(181,136,62,0.3);
   display: flex; align-items: center; justify-content: center;
-  font-size: 20px; flex-shrink: 0;
+  flex-shrink: 0;
 }
+.contact-item-icon .icon-svg svg { stroke: var(--gold-lt); }
 .contact-item-label {
   font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
   color: var(--gold-lt); margin-bottom: 4px;
@@ -1000,7 +1006,6 @@ footer {
   .hamburger { display: flex; }
   .hero-panels { width: 40%; }
   .hero-content { padding: 0 32px; }
-  .hero-stats { left: 32px; right: auto; gap: 32px; }
   .about-grid { grid-template-columns: 1fr; gap: 60px; }
   .about-images { height: 400px; }
   .services-grid { grid-template-columns: 1fr 1fr; }
@@ -1017,7 +1022,6 @@ footer {
   .hero-panels { display: none; }
   .hero-content { padding: 0 24px; max-width: 100%; }
   .hero-accent { display: none; }
-  .hero-stats { flex-wrap: wrap; gap: 24px; bottom: 32px; left: 24px; }
   .scroll-indicator { display: none; }
   .process-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
@@ -1093,7 +1097,6 @@ footer {
   <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
-      <span class="hero-eyebrow-text">London's Premier Renovation Specialists</span>
     </div>
     <h1 class="hero-title">
       <em>Better Homes</em>
@@ -1111,25 +1114,6 @@ footer {
     </div>
   </div>
 
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-num">150+</div>
-      <div class="hero-stat-label">Projects Completed</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">5★</div>
-      <div class="hero-stat-label">Google Rating</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">10+</div>
-      <div class="hero-stat-label">Years Experience</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">100%</div>
-      <div class="hero-stat-label">Certified Trades</div>
-    </div>
-  </div>
-
   <div class="scroll-indicator">
     <div class="scroll-line"></div>
     <span>Scroll</span>
@@ -1139,7 +1123,6 @@ footer {
 <!-- ─── MARQUEE ─── -->
 <div class="marquee-bar">
   <div class="marquee-track">
-    <!-- repeated twice for seamless loop -->
     <span class="marquee-item">Full Building Renovation <span class="marquee-dot"></span></span>
     <span class="marquee-item">Interior Design &amp; Architecture <span class="marquee-dot"></span></span>
     <span class="marquee-item">Sectional Renovation <span class="marquee-dot"></span></span>
@@ -1181,28 +1164,40 @@ footer {
         <div class="about-divider"></div>
         <div class="about-highlights">
           <div class="about-hl">
-            <div class="about-hl-icon">🏛️</div>
+            <div class="about-hl-icon">
+              <!-- Architecture icon -->
+              <span class="icon-svg"><svg viewBox="0 0 24 24"><rect x="3" y="21" width="18" height="3" rx="1"/><path d="M5 21V11l7-7 7 7v10"/><path d="M9 21v-4h6v4"/></svg></span>
+            </div>
             <div class="about-hl-text">
               <strong>Architect-Led Design</strong>
               <span>Every project starts with a fully qualified architectural plan.</span>
             </div>
           </div>
           <div class="about-hl">
-            <div class="about-hl-icon">⚡</div>
+            <div class="about-hl-icon">
+              <!-- Certificate icon -->
+              <span class="icon-svg"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M9 15l-3 6 6-3 6 3-3-6"/></svg></span>
+            </div>
             <div class="about-hl-text">
               <strong>Certified Professionals Only</strong>
               <span>Electricians, plumbers, carpenters, tilers — all fully qualified.</span>
             </div>
           </div>
           <div class="about-hl">
-            <div class="about-hl-icon">📍</div>
+            <div class="about-hl-icon">
+              <!-- Location pin icon -->
+              <span class="icon-svg"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"/></svg></span>
+            </div>
             <div class="about-hl-text">
               <strong>London Exclusive</strong>
               <span>West, North &amp; Central London — deep local expertise, every time.</span>
             </div>
           </div>
           <div class="about-hl">
-            <div class="about-hl-icon">🏢</div>
+            <div class="about-hl-icon">
+              <!-- Building icon -->
+              <span class="icon-svg"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9" y2="10"/><line x1="15" y1="6" x2="15" y2="10"/><line x1="9" y1="14" x2="9" y2="18"/><line x1="15" y1="14" x2="15" y2="18"/></svg></span>
+            </div>
             <div class="about-hl-text">
               <strong>Registered Company</strong>
               <span>UK Renovation Services Ltd — Company No. 16352364</span>
@@ -1266,7 +1261,10 @@ footer {
 
       <div class="service-card service-featured reveal d1">
         <div>
-          <div class="service-icon" style="font-size:28px;">🏗️</div>
+          <div class="service-icon icon-2xl">
+            <!-- Building/crane icon -->
+            <span class="icon-svg icon-lg"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 6h2v2H9zM13 6h2v2h-2zM9 12h2v2H9zM13 12h2v2h-2zM9 18h6"/></svg></span>
+          </div>
           <h3 class="service-name" style="font-size:30px; margin-bottom:16px;">Full Building<br>Renovation</h3>
           <p class="service-desc" style="font-size:15px; max-width:380px;">From concept to completion, we transform entire properties into stunning living spaces. Our architect-led team ensures a seamless process with exceptional craftsmanship at every stage.</p>
           <a href="#contact" class="service-link" style="margin-top:32px;">
@@ -1290,7 +1288,10 @@ footer {
       </div>
 
       <div class="service-card reveal d1">
-        <div class="service-icon">🎨</div>
+        <div class="service-icon">
+          <!-- Pen/ruler design icon -->
+          <span class="icon-svg"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+        </div>
         <h3 class="service-name">Interior Design &amp; Architecture</h3>
         <p class="service-desc">Elevate your space with our bespoke interior design and architectural services. We bring your vision to life with precision and creativity.</p>
         <a href="#contact" class="service-link">
@@ -1300,7 +1301,10 @@ footer {
       </div>
 
       <div class="service-card reveal d2">
-        <div class="service-icon">🔧</div>
+        <div class="service-icon">
+          <!-- Wrench tool icon -->
+          <span class="icon-svg"><svg viewBox="0 0 24 24"><circle cx="8" cy="16" r="4"/><path d="M14 4l-6 6M10.5 7.5l3 3"/></svg></span>
+        </div>
         <h3 class="service-name">Sectional Renovation</h3>
         <p class="service-desc">Focused renovations for specific areas — kitchens, bathrooms, hallways. Enhance the functionality and aesthetics of key spaces.</p>
         <a href="#contact" class="service-link">
@@ -1310,7 +1314,10 @@ footer {
       </div>
 
       <div class="service-card reveal d3">
-        <div class="service-icon">🏠</div>
+        <div class="service-icon">
+          <!-- Home icon -->
+          <span class="icon-svg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        </div>
         <h3 class="service-name">New Build Construction</h3>
         <p class="service-desc">Embark on your new construction project with confidence. Our experienced team handles every aspect, delivering quality and craftsmanship.</p>
         <a href="#contact" class="service-link">
@@ -1320,7 +1327,10 @@ footer {
       </div>
 
       <div class="service-card reveal d4">
-        <div class="service-icon">🌿</div>
+        <div class="service-icon">
+          <!-- Map/land icon -->
+          <span class="icon-svg"><svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></span>
+        </div>
         <h3 class="service-name">Land Development</h3>
         <p class="service-desc">Unlock the potential of your land with our strategic development solutions. We guide you through the entire process, from planning to execution.</p>
         <a href="#contact" class="service-link">
@@ -1341,7 +1351,11 @@ footer {
         <div class="tag">Portfolio</div>
         <h2 class="projects-title">Our <em>Projects</em></h2>
       </div>
-      <a href="tel:07367365757" class="btn btn-outline reveal">📞 Call Us Today</a>
+      <a href="tel:07367365757" class="btn btn-outline reveal">
+        <!-- Phone icon -->
+        <span class="icon-svg"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4 2.08h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        Call Us Today
+      </a>
     </div>
     <div class="projects-grid">
       <div class="project-card pc1 reveal d1">
@@ -1407,7 +1421,11 @@ footer {
         <p class="blog-text">Without guidance, even well-intended projects can lead to costly compromises. Our insights help you plan better, decide with confidence, and build the right way.</p>
         <div class="blog-cta-row">
           <a href="#contact" class="btn btn-gold">Consult With Us</a>
-          <a href="tel:07367365757" class="btn btn-outline-white">📞 07367 365 757</a>
+          <a href="tel:07367365757" class="btn btn-outline-white">
+            <!-- Phone icon -->
+            <span class="icon-svg"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4 2.08h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            07367 365 757
+          </a>
         </div>
       </div>
     </div>
@@ -1429,7 +1447,11 @@ footer {
           <span class="m-tag">Commercial</span>
           <span class="m-tag">Scheduled Visits</span>
         </div>
-        <a href="tel:07367365757" class="btn btn-gold">📞 Call to Discuss</a>
+        <a href="tel:07367365757" class="btn btn-gold">
+          <!-- Phone icon -->
+          <span class="icon-svg"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4 2.08h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          Call to Discuss
+        </a>
       </div>
       <div class="maintenance-visual reveal-right">
         <div class="maintenance-card mc1">
@@ -1458,32 +1480,50 @@ footer {
     </div>
     <div class="why-grid">
       <div class="why-card reveal d1">
-        <span class="why-icon">🏆</span>
+        <div class="why-icon">
+          <!-- Shield/check icon -->
+          <span class="icon-svg icon-xl"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+        </div>
         <h3 class="why-name">Certified Professionals</h3>
         <p class="why-desc">We work only with fully qualified, certified tradespeople — electricians, plumbers, carpenters, tilers, and decorators. No shortcuts, ever.</p>
       </div>
       <div class="why-card reveal d2">
-        <span class="why-icon">📐</span>
+        <div class="why-icon">
+          <!-- Compass/drafting icon -->
+          <span class="icon-svg icon-xl"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="12 2 15 9 22 12 15 15 12 22 9 15 2 12 9 9"/></svg></span>
+        </div>
         <h3 class="why-name">Architect-Led Projects</h3>
         <p class="why-desc">Every project begins with proper architectural design and detailed planning. This is the foundation of every successful, high-quality renovation.</p>
       </div>
       <div class="why-card reveal d3">
-        <span class="why-icon">✅</span>
+        <div class="why-icon">
+          <!-- Checklist icon -->
+          <span class="icon-svg icon-xl"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><polyline points="9 14 11 16 15 12"/></svg></span>
+        </div>
         <h3 class="why-name">Clear Process</h3>
         <p class="why-desc">Architectural design → detailed planning → skilled execution. Our structured approach eliminates stress and delivers predictable, outstanding results.</p>
       </div>
       <div class="why-card reveal d1">
-        <span class="why-icon">💬</span>
+        <div class="why-icon">
+          <!-- Chat/message icon -->
+          <span class="icon-svg icon-xl"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg></span>
+        </div>
         <h3 class="why-name">Transparent Communication</h3>
         <p class="why-desc">From first call to final handover, you'll always know where your project stands. Clear timelines, honest pricing, no surprises.</p>
       </div>
       <div class="why-card reveal d2">
-        <span class="why-icon">📍</span>
+        <div class="why-icon">
+          <!-- Map pin icon -->
+          <span class="icon-svg icon-xl"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"/></svg></span>
+        </div>
         <h3 class="why-name">London Specialists</h3>
         <p class="why-desc">We work exclusively in London — West, North, and Central. Deep local knowledge of planning requirements, building regulations, and borough standards.</p>
       </div>
       <div class="why-card reveal d3">
-        <span class="why-icon">🔑</span>
+        <div class="why-icon">
+          <!-- Key icon -->
+          <span class="icon-svg icon-xl"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M10.8 11.2L21 2M18 5l3 3M2 15l1 3 3 1"/></svg></span>
+        </div>
         <h3 class="why-name">Zero Stress Delivery</h3>
         <p class="why-desc">We handle everything — from permits and design to the final coat of paint. You focus on your life; we focus on your home.</p>
       </div>
@@ -1497,23 +1537,38 @@ footer {
     <p class="partners-label reveal">Our Partners &amp; Accreditations</p>
     <div class="partners-row reveal">
       <div class="partner-item">
-        <div class="partner-icon">⚡</div>
+        <div class="partner-icon">
+          <!-- Lightning bolt icon -->
+          <span class="icon-svg"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+        </div>
         <div class="partner-name">UK Electrician</div>
       </div>
       <div class="partner-item">
-        <div class="partner-icon">🏗️</div>
+        <div class="partner-icon">
+          <!-- Crane/building icon -->
+          <span class="icon-svg"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="8" y2="10"/><line x1="16" y1="6" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="18"/><line x1="16" y1="14" x2="16" y2="18"/></svg></span>
+        </div>
         <div class="partner-name">Soheib Shayan</div>
       </div>
       <div class="partner-item">
-        <div class="partner-icon">🛡️</div>
+        <div class="partner-icon">
+          <!-- Shield icon -->
+          <span class="icon-svg"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z"/></svg></span>
+        </div>
         <div class="partner-name">Tajan Ara</div>
       </div>
       <div class="partner-item">
-        <div class="partner-icon">🔒</div>
+        <div class="partner-icon">
+          <!-- Lock/building icon -->
+          <span class="icon-svg"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+        </div>
         <div class="partner-name">Companies House</div>
       </div>
       <div class="partner-item">
-        <div class="partner-icon">⭐</div>
+        <div class="partner-icon">
+          <!-- Star icon -->
+          <span class="icon-svg"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        </div>
         <div class="partner-name">Google Verified</div>
       </div>
     </div>
@@ -1595,7 +1650,10 @@ footer {
         <p class="contact-text">Get a free consultation and expert advice for your project. We'll assess your needs, walk you through the process, and provide a clear, honest quote — with no obligation.</p>
         <div class="contact-details">
           <div class="contact-item">
-            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-icon">
+              <!-- Phone icon -->
+              <span class="icon-svg"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4 2.08h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            </div>
             <div>
               <div class="contact-item-label">Call Us</div>
               <div class="contact-item-val"><a href="tel:07367365757">07367 365 757</a></div>
@@ -1603,7 +1661,10 @@ footer {
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-icon">
+              <!-- Mail icon -->
+              <span class="icon-svg"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 8 12 15 22 8"/></svg></span>
+            </div>
             <div>
               <div class="contact-item-label">Email Us</div>
               <div class="contact-item-val"><a href="mailto:info@ukrenovation.co.uk">info@ukrenovation.co.uk</a></div>
@@ -1611,7 +1672,10 @@ footer {
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-icon">
+              <!-- Map pin icon -->
+              <span class="icon-svg"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"/></svg></span>
+            </div>
             <div>
               <div class="contact-item-label">Areas We Cover</div>
               <div class="contact-item-val">London — West, North &amp; Central</div>
@@ -1619,7 +1683,10 @@ footer {
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">🏢</div>
+            <div class="contact-item-icon">
+              <!-- Building icon -->
+              <span class="icon-svg"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9" y2="10"/><line x1="15" y1="6" x2="15" y2="10"/><line x1="9" y1="14" x2="9" y2="18"/><line x1="15" y1="14" x2="15" y2="18"/></svg></span>
+            </div>
             <div>
               <div class="contact-item-label">Company</div>
               <div class="contact-item-val">UK Renovation Services Limited</div>
@@ -1741,34 +1808,6 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
   observer.observe(el);
 });
-
-/* Counter animation for hero stats */
-function animateCount(el, target, suffix) {
-  let current = 0;
-  const step = Math.ceil(target / 60);
-  const timer = setInterval(() => {
-    current = Math.min(current + step, target);
-    el.textContent = current + suffix;
-    if (current >= target) clearInterval(timer);
-  }, 20);
-}
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const nums = entry.target.querySelectorAll('.hero-stat-num');
-      const data = [
-        { el: nums[0], val: 150, sfx: '+' },
-        { el: nums[1], val: 5,   sfx: '★' },
-        { el: nums[2], val: 10,  sfx: '+' },
-        { el: nums[3], val: 100, sfx: '%' },
-      ];
-      data.forEach(d => animateCount(d.el, d.val, d.sfx));
-      statsObserver.disconnect();
-    }
-  });
-}, { threshold: 0.5 });
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) statsObserver.observe(heroStats);
 
 /* Form submission */
 document.getElementById('formSubmit').addEventListener('click', function() {
