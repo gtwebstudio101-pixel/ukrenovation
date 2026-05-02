@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Interior Design & Architecture London — UK Renovation Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',sans-serif;background:#F7F4EF;color:#1E1E1E;overflow-x:hidden;line-height:1.65}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+ul,ol{list-style:none}
+:root{
+  --cream:#F7F4EF;--cream2:#EDE8E0;--white:#FDFBF8;--stone:#DDD6CB;
+  --sand:#C4B49A;--gold:#A87C3A;--gold-lt:#C9993D;--gold-pale:#F0E5CF;
+  --char:#1A1A1A;--slate:#2C2C2C;--muted:#6A6460;--dark:#161412;
+  --dark2:#1E1B17;--dark3:#252119;--dt:#EAE4D8;
+  --nav-h:68px;--ease:cubic-bezier(.22,.68,0,1.2);--ease2:cubic-bezier(.25,.46,.45,.94);
+}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--sand);border-radius:2px}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;line-height:1.07;font-weight:300}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}
+@media(min-width:640px){.wrap{padding:0 36px}}
+@media(min-width:1024px){.wrap{padding:0 56px}}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 28px;border-radius:2px;
+  font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  transition:all .32s var(--ease2);
+}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#8d6828;transform:translateY(-2px);box-shadow:0 10px 28px rgba(168,124,58,.35)}
+.btn-outline{border:1.5px solid var(--char);color:var(--char);background:transparent}
+.btn-outline:hover{background:var(--char);color:#fff;transform:translateY(-2px)}
+.btn-outline-w{border:1.5px solid rgba(255,255,255,.5);color:#fff;background:transparent}
+.btn-outline-w:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.au{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease}
+.al{opacity:0;transform:translateX(-36px);transition:opacity .75s ease,transform .75s ease}
+.ar{opacity:0;transform:translateX(36px);transition:opacity .75s ease,transform .75s ease}
+.au.in,.al.in,.ar.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;transition:background .4s,box-shadow .4s;
+}
+@media(min-width:640px){#nav{padding:0 36px}}
+@media(min-width:1024px){#nav{padding:0 56px}}
+#nav.solid{background:rgba(247,244,239,.96);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--stone)}
+.nav-brand{display:flex;flex-direction:column;line-height:1}
+.nav-brand-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#fff;transition:color .4s}
+#nav.solid .nav-brand-name{color:var(--char)}
+.nav-brand-sub{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:3px;transition:color .4s}
+#nav.solid .nav-brand-sub{color:var(--muted)}
+.nav-links{display:none;list-style:none;align-items:center;gap:24px}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-links a{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold-lt);transition:width .3s}
+.nav-links a:hover{color:var(--gold-lt)}.nav-links a:hover::after{width:100%}
+#nav.solid .nav-links a{color:var(--muted)}#nav.solid .nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:#fff!important;padding:9px 18px;border-radius:2px;font-size:10px;font-weight:600;letter-spacing:2px;transition:all .3s}
+.nav-cta::after{display:none!important}.nav-cta:hover{background:#8d6828!important}
+.ham{display:flex;flex-direction:column;gap:5px;padding:6px}
+@media(min-width:900px){.ham{display:none}}
+.ham span{display:block;width:20px;height:1.5px;background:#fff;transition:all .3s}
+#nav.solid .ham span{background:var(--char)}
+.drawer{position:fixed;inset:0;z-index:899;background:rgba(247,244,239,.98);backdrop-filter:blur(16px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transform:translateX(120%);transition:transform .45s var(--ease2)}
+.drawer.open{transform:translateX(0)}
+.drawer a{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--char);letter-spacing:2px;transition:color .3s}
+.drawer a:hover{color:var(--gold)}
+
+#hero{position:relative;min-height:70vh;display:flex;align-items:center;background:var(--dark);overflow:hidden}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(14,11,8,.95) 0%,rgba(26,21,14,.85) 50%,rgba(14,11,8,.95) 100%)}
+.hero-lines{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-lines::before{content:'';position:absolute;top:0;bottom:0;left:52%;width:1px;background:linear-gradient(to bottom,transparent,rgba(168,124,58,.25) 35%,rgba(168,124,58,.25) 65%,transparent)}
+.hero-glow{position:absolute;pointer-events:none;border-radius:50%;background:radial-gradient(circle,rgba(168,124,58,.12) 0%,transparent 65%);width:min(600px,80vw);height:min(600px,80vw);top:-15%;right:-10%;animation:glow 8s ease-in-out infinite}
+@keyframes glow{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.1);opacity:1}}
+.hero-content{position:relative;z-index:2;max-width:700px;padding:100px 20px 80px}
+@media(min-width:640px){.hero-content{padding:100px 36px 80px}}
+@media(min-width:1024px){.hero-content{padding:100px 56px 80px}}
+.hero-tag{display:inline-block;background:rgba(168,124,58,.15);border:1px solid rgba(168,124,58,.35);color:var(--gold-lt);font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:6px 14px;border-radius:1px;margin-bottom:18px;opacity:0;animation:fadeSlide .8s ease .3s forwards}
+.hero-title{font-size:clamp(36px,6vw,72px);font-weight:300;color:#fff;margin-bottom:20px;opacity:0;animation:fadeSlide .9s ease .45s forwards}
+.hero-title em{font-style:italic;color:var(--gold-lt)}
+.hero-desc{font-size:clamp(14px,1.6vw,16px);color:rgba(255,255,255,.55);line-height:1.85;max-width:560px;margin-bottom:36px;opacity:0;animation:fadeSlide .9s ease .58s forwards}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;opacity:0;animation:fadeSlide .9s ease .68s forwards}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+.marquee{background:var(--gold);padding:12px 0;overflow:hidden}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 30s linear infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mi{display:inline-flex;align-items:center;gap:18px;padding:0 24px;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#fff}
+.mi-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.4);flex-shrink:0}
+
+.sec{padding:80px 0}
+@media(min-width:768px){.sec{padding:110px 0}}
+.stag{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.stag::before{content:'';width:26px;height:1px;background:var(--gold);flex-shrink:0}
+.stag-dark{color:var(--gold-lt)}.stag-dark::before{background:var(--gold-lt)}
+.stag-center{justify-content:center}.stag-center::before{display:none}
+.sh2{font-size:clamp(28px,4vw,50px);color:var(--char);line-height:1.08}
+.sh2 em{font-style:italic;color:var(--gold)}
+.sh2-dark{color:var(--dt)}.sh2-dark em{color:var(--gold-lt)}
+.slead{font-size:15px;color:var(--muted);line-height:1.85;margin-top:14px;max-width:600px}
+.slead-dark{color:rgba(234,228,216,.5)}.slead-center{margin-inline:auto;text-align:center}
+
+#intro{background:var(--white)}
+.intro-grid{display:grid;gap:48px}
+@media(min-width:900px){.intro-grid{grid-template-columns:1fr 1fr;gap:80px;align-items:center}}
+.intro-badge{display:flex;flex-direction:column;background:var(--dark);border-radius:3px;overflow:hidden;position:relative}
+.intro-badge-img{height:280px;overflow:hidden;position:relative}
+@media(min-width:640px){.intro-badge-img{height:360px}}
+.intro-badge-img img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:transform 8s ease}
+.intro-badge:hover .intro-badge-img img{transform:scale(1.05)}
+.intro-badge-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,11,8,.9) 0%,transparent 50%)}
+.intro-badge-foot{padding:28px 32px;border-top:1px solid rgba(255,255,255,.06)}
+.ibf-tag{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-lt);margin-bottom:10px}
+.ibf-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--dt);line-height:1.2;margin-bottom:8px}
+.ibf-desc{font-size:13px;color:rgba(234,228,216,.45);line-height:1.75}
+.intro-body p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:14px}
+
+#services-offered{background:var(--cream)}
+.services-grid{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:600px){.services-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+.svc-card{background:var(--white);border-radius:3px;padding:32px 28px;border:1px solid var(--stone);transition:transform .4s var(--ease2),box-shadow .4s,border-color .4s;position:relative;overflow:hidden;text-align:center}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-card:hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(0,0,0,.07);border-color:rgba(168,124,58,.25)}
+.svc-icon{width:52px;height:52px;border-radius:50%;background:var(--cream2);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;color:var(--gold)}
+.svc-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.svc-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--char);margin-bottom:8px}
+.svc-desc{font-size:13px;color:var(--muted);line-height:1.75}
+
+#process{background:var(--dark)}
+.process-grid{display:grid;gap:2px;grid-template-columns:1fr}
+@media(min-width:700px){.process-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.process-grid{grid-template-columns:repeat(4,1fr)}}
+.step-card{background:var(--dark2);padding:36px 28px;position:relative;overflow:hidden;transition:background .35s}
+.step-card:hover{background:var(--dark3)}
+.step-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),var(--gold-lt));transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
+.step-card:hover::after{transform:scaleX(1)}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:rgba(168,124,58,.18);line-height:1;margin-bottom:18px;display:block;transition:color .4s}
+.step-card:hover .step-num{color:rgba(168,124,58,.3)}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--dt);margin-bottom:10px}
+.step-desc{font-size:13px;color:rgba(234,228,216,.45);line-height:1.75}
+
+#why{background:var(--cream)}
+.why-grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:600px){.why-grid{grid-template-columns:1fr 1fr}}
+.why-item{display:flex;align-items:center;gap:16px;background:var(--white);padding:24px 28px;border-radius:3px;border:1px solid var(--stone);font-size:15px;color:var(--slate);transition:all .35s var(--ease2)}
+.why-item:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.06);border-color:rgba(168,124,58,.25)}
+.why-dot{width:12px;height:12px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+#areas{background:var(--cream2)}
+.areas-grid{display:grid;gap:2px;grid-template-columns:1fr 1fr}
+@media(min-width:700px){.areas-grid{grid-template-columns:repeat(4,1fr)}}
+.area-card{background:var(--white);padding:32px 24px;text-align:center;border:1px solid var(--stone);border-radius:3px;transition:all .35s var(--ease2)}
+.area-card:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(0,0,0,.07);border-color:rgba(168,124,58,.3)}
+.area-icon{width:44px;height:44px;border-radius:50%;background:var(--cream2);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:var(--gold);transition:background .3s}
+.area-card:hover .area-icon{background:var(--gold-pale)}
+.area-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.area-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--char);margin-bottom:4px}
+.area-sub{font-size:12px;color:var(--muted)}
+
+#faq{background:var(--white)}
+.faq-grid{display:grid;gap:48px}
+@media(min-width:900px){.faq-grid{grid-template-columns:1fr 2fr;gap:80px;align-items:start}}
+.faq-side p{font-size:14px;color:var(--muted);line-height:1.85;margin-top:14px;margin-bottom:28px}
+.faq-list{display:flex;flex-direction:column;gap:2px}
+.faq-item{border-radius:2px;overflow:hidden;background:var(--cream);border:1px solid var(--stone)}
+.faq-q{width:100%;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;font-weight:500;color:var(--char);text-align:left;cursor:pointer;transition:background .3s}
+.faq-q:hover{background:var(--cream2)}
+.faq-q.open{background:var(--gold);color:#fff}
+.faq-arrow{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;transition:transform .35s}
+.faq-q.open .faq-arrow{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease,padding .3s;font-size:14px;color:var(--muted);line-height:1.8;padding:0 20px}
+.faq-a.open{max-height:300px;padding:16px 20px}
+
+#cta{background:var(--dark);position:relative;overflow:hidden;padding:100px 0}
+.cta-glow{position:absolute;top:-30%;right:-10%;width:min(600px,80vw);height:min(600px,80vw);border-radius:50%;background:radial-gradient(circle,rgba(168,124,58,.14) 0%,transparent 65%);pointer-events:none}
+.cta-inner{position:relative;z-index:2;max-width:720px}
+.cta-title{font-size:clamp(30px,4.5vw,58px);font-weight:300;color:#fff;margin-bottom:16px;margin-top:6px}
+.cta-title em{font-style:italic;color:var(--gold-lt)}
+.cta-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.85;max-width:520px;margin-bottom:40px}
+.cta-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:48px}
+.cta-contacts{display:flex;flex-direction:column;gap:18px}
+@media(min-width:600px){.cta-contacts{flex-direction:row;gap:40px}}
+.cc-item{display:flex;align-items:center;gap:14px}
+.cc-icon{width:40px;height:40px;border-radius:50%;border:1px solid rgba(168,124,58,.35);display:flex;align-items:center;justify-content:center;color:var(--gold-lt);flex-shrink:0}
+.cc-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.cc-lbl{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:2px}
+.cc-val{font-size:15px;color:var(--dt)}.cc-val a{color:inherit;transition:color .3s}.cc-val a:hover{color:var(--gold-lt)}
+
+footer{background:#0D0C0A;padding:56px 0 28px;border-top:1px solid rgba(255,255,255,.04)}
+.footer-grid{display:grid;gap:36px;grid-template-columns:1fr;margin-bottom:48px}
+@media(min-width:640px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.footer-grid{grid-template-columns:2fr 1fr 1fr 1fr}}
+.fb-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:4px}
+.fb-reg{font-size:9px;letter-spacing:1px;color:rgba(255,255,255,.22);margin-bottom:14px}
+.fb-desc{font-size:13px;color:rgba(255,255,255,.35);line-height:1.8;max-width:260px}
+.fc-ttl{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-lt);margin-bottom:16px}
+.fc-links{display:flex;flex-direction:column;gap:9px}
+.fc-links a{font-size:13px;color:rgba(255,255,255,.35);transition:color .3s}.fc-links a:hover{color:var(--gold-lt)}
+.footer-btm{border-top:1px solid rgba(255,255,255,.04);padding-top:22px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.25)}
+</style>
+</head>
+<body>
+
+<div class="drawer" id="drawer"><a href="index.html">Home</a><a href="#services-offered">Services</a><a href="#process">Process</a><a href="#faq">FAQs</a><a href="#cta" style="color:var(--gold)">Get a Quote</a></div>
+<nav id="nav">
+  <a href="index.html" class="nav-brand"><span class="nav-brand-name">UK Renovation</span><span class="nav-brand-sub">Expert Home Renovation · London</span></a>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="#services-offered">Services</a></li><li><a href="#process">Process</a></li><li><a href="#areas">Areas</a></li><li><a href="#faq">FAQs</a></li><li><a href="#cta" class="nav-cta">Free Quote</a></li></ul>
+  <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<section id="hero">
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-lines" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Interior Design &amp; Architecture</div>
+    <h1 class="hero-title">Bespoke <em>Interior Design</em> &amp; Architecture</h1>
+    <p class="hero-desc">UK Renovation provides bespoke interior design and architectural services across London. We bring your vision to life with precision, creativity, and a deep understanding of residential spaces — from concept sketches and 3D visualisation through to material selection and final styling.</p>
+    <div class="hero-actions"><a href="#cta" class="btn btn-gold">Start Your Project</a><a href="#services-offered" class="btn btn-outline-w">See Our Services</a></div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track">
+  <span class="mi">Interior Design<span class="mi-dot"></span></span><span class="mi">Architecture<span class="mi-dot"></span></span><span class="mi">Space Planning<span class="mi-dot"></span></span><span class="mi">3D Visualisation<span class="mi-dot"></span></span><span class="mi">Material Selection<span class="mi-dot"></span></span><span class="mi">Lighting Design<span class="mi-dot"></span></span><span class="mi">West · North · Central London<span class="mi-dot"></span></span><span class="mi">Bespoke Solutions<span class="mi-dot"></span></span>
+  <span class="mi">Interior Design<span class="mi-dot"></span></span><span class="mi">Architecture<span class="mi-dot"></span></span><span class="mi">Space Planning<span class="mi-dot"></span></span><span class="mi">3D Visualisation<span class="mi-dot"></span></span><span class="mi">Material Selection<span class="mi-dot"></span></span><span class="mi">Lighting Design<span class="mi-dot"></span></span><span class="mi">West · North · Central London<span class="mi-dot"></span></span><span class="mi">Bespoke Solutions<span class="mi-dot"></span></span>
+</div></div>
+
+<section id="intro" class="sec"><div class="wrap"><div class="intro-grid">
+  <div class="al"><div class="intro-badge"><div class="intro-badge-img"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/ukrenovation/0a0064c2cd8663054465b56fa9e19dd9fdacb203/uk%20img/7B1.avif" alt="Interior design and architecture" loading="lazy"/><div class="intro-badge-overlay"></div></div><div class="intro-badge-foot"><div class="ibf-tag">Service Overview</div><div class="ibf-title">Bespoke Interior Solutions</div><div class="ibf-desc">Design-led, detail-focused, and tailored to your lifestyle — creating spaces that feel unmistakably yours.</div></div></div></div>
+  <div class="ar"><div class="stag">Our Approach</div><h2 class="sh2" style="margin-top:4px">Design That <em>Transforms</em> Living</h2><div class="intro-body" style="margin-top:22px"><p>Great interior design is about more than aesthetics — it's about how a space feels, functions, and supports your daily life. At UK Renovation, our interior design and architecture service begins with understanding how you live, work, and relax.</p><p>We combine architectural thinking with interior design creativity. Whether reconfiguring a layout for better flow, specifying finishes that stand the test of time, or designing custom joinery that maximises every square foot — our team brings both technical precision and design flair to every project.</p><p>From initial concept sketches to the final accessory placement, we guide you through every decision — ensuring your home reflects your personality while enhancing its long-term value.</p></div><div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px"><a href="#cta" class="btn btn-gold">Get a Free Consultation</a><a href="#process" class="btn btn-outline">View Our Process</a></div></div>
+</div></div></section>
+
+<section id="services-offered" class="sec"><div class="wrap">
+  <div class="au" style="text-align:center;margin-bottom:52px"><div class="stag stag-center" style="justify-content:center;margin-bottom:14px"><span>What We Offer</span></div><h2 class="sh2">Interior Design &amp; Architecture <em>Services</em></h2><p class="slead slead-center">From space planning to final styling — a complete design service for London homes.</p></div>
+  <div class="services-grid">
+    <div class="svc-card au d1"><div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div class="svc-title">Space Planning &amp; Layout</div><p class="svc-desc">Optimising room configurations for flow, natural light, and how you actually use your space.</p></div>
+    <div class="svc-card au d2"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg></div><div class="svc-title">Material &amp; Finish Selection</div><p class="svc-desc">Curated palettes of flooring, wall finishes, worktops, tiles, and joinery materials.</p></div>
+    <div class="svc-card au d3"><div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="12 2 15 9 22 12 15 15 12 22 9 15 2 12 9 9"/></svg></div><div class="svc-title">Lighting Design</div><p class="svc-desc">Layered lighting schemes — ambient, task, and accent — that transform how rooms feel throughout the day.</p></div>
+    <div class="svc-card au d1"><div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="svc-title">3D Visualisation</div><p class="svc-desc">Photorealistic renders so you can see exactly how your space will look before any work begins.</p></div>
+    <div class="svc-card au d2"><div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9" y2="10"/><line x1="15" y1="6" x2="15" y2="10"/></svg></div><div class="svc-title">Kitchen &amp; Bathroom Design</div><p class="svc-desc">Specialist design for the most functional rooms in your home — beautiful, practical, and built to last.</p></div>
+    <div class="svc-card au d3"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="svc-title">Furniture &amp; Styling</div><p class="svc-desc">Complete furnishing packages, custom joinery, and final styling for a polished, cohesive look.</p></div>
+  </div>
+</div></section>
+
+<section id="process" class="sec"><div class="wrap">
+  <div class="au" style="text-align:center;margin-bottom:52px"><div class="stag stag-dark stag-center" style="justify-content:center;margin-bottom:14px"><span>How It Works</span></div><h2 class="sh2 sh2-dark">Our Design <em>Process</em></h2><p class="slead slead-dark slead-center">Four clear stages — collaborative, creative, and carefully managed.</p></div>
+  <div class="process-grid">
+    <div class="step-card au d1"><span class="step-num">01</span><div class="step-title">Discovery &amp; Brief</div><p class="step-desc">We meet you, understand your lifestyle, preferences, and goals, and define the project brief together.</p></div>
+    <div class="step-card au d2"><span class="step-num">02</span><div class="step-title">Concept &amp; Design Development</div><p class="step-desc">Mood boards, layout options, 3D visuals, and material palettes — we refine until it feels right.</p></div>
+    <div class="step-card au d3"><span class="step-num">03</span><div class="step-title">Technical Specification</div><p class="step-desc">Detailed drawings, schedules, and specifications ready for procurement and construction.</p></div>
+    <div class="step-card au d4"><span class="step-num">04</span><div class="step-title">Implementation &amp; Styling</div><p class="step-desc">We coordinate with the build team, oversee installation, and complete the final styling.</p></div>
+  </div>
+</div></section>
+
+<section id="why" class="sec"><div class="wrap">
+  <div class="au" style="text-align:center;margin-bottom:48px"><div class="stag stag-center" style="justify-content:center;margin-bottom:14px"><span>Why Our Design Service</span></div><h2 class="sh2">What Makes Us <em>Different</em></h2></div>
+  <div class="why-grid">
+    <div class="why-item au d1"><div class="why-dot"></div>Architectural thinking combined with interior design creativity</div>
+    <div class="why-item au d2"><div class="why-dot"></div>Every design is bespoke — no templates, no copy-paste solutions</div>
+    <div class="why-item au d1"><div class="why-dot"></div>3D visualisation so you see exactly what you're getting</div>
+    <div class="why-item au d2"><div class="why-dot"></div>Material and finish expertise built from years of London projects</div>
+    <div class="why-item au d3"><div class="why-dot"></div>Design that considers buildability — not just beauty</div>
+    <div class="why-item au d4"><div class="why-dot"></div>Seamless coordination with our construction team if works follow</div>
+  </div>
+</div></section>
+
+<section id="areas" class="sec"><div class="wrap">
+  <div class="au" style="text-align:center;margin-bottom:48px"><div class="stag stag-center" style="justify-content:center;margin-bottom:14px"><span>Coverage</span></div><h2 class="sh2">Areas We <em>Cover</em></h2><p class="slead slead-center">Interior design and architecture services across London.</p></div>
+  <div class="areas-grid">
+    <div class="area-card au d1"><div class="area-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg></div><div class="area-name">Central London</div><div class="area-sub">EC, WC, W1, SW1</div></div>
+    <div class="area-card au d2"><div class="area-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="area-name">West London</div><div class="area-sub">W2–W14 · Hammersmith · Ealing</div></div>
+    <div class="area-card au d3"><div class="area-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="area-name">North London</div><div class="area-sub">N1–N22 · Islington · Barnet</div></div>
+    <div class="area-card au d4"><div class="area-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/></svg></div><div class="area-name">Brentford &amp; Richmond</div><div class="area-sub">TW · Richmond upon Thames</div></div>
+  </div>
+</div></section>
+
+<section id="faq" class="sec"><div class="wrap"><div class="faq-grid">
+  <div class="al"><div class="stag" style="margin-bottom:14px"><span>FAQs</span></div><h2 class="sh2">Frequently Asked <em>Questions</em></h2><p class="faq-side">Everything you need to know about our interior design and architecture services in London.</p><a href="#cta" class="btn btn-gold">Ask Us Directly</a></div>
+  <div class="ar"><div class="faq-list">
+    <div class="faq-item"><button class="faq-q">What is the difference between interior design and architecture? <svg class="faq-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Architecture focuses on the structure, layout, and external envelope of a building. Interior design focuses on the internal spaces — finishes, lighting, furniture, and styling. Our service combines both for a cohesive result.</div></div>
+    <div class="faq-item"><button class="faq-q">Do you provide 3D visualisations? <svg class="faq-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Yes. We create photorealistic 3D renders so you can walk through your space virtually before any physical work begins.</div></div>
+    <div class="faq-item"><button class="faq-q">Can you help with material and finish selection? <svg class="faq-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Absolutely. We curate complete palettes — flooring, wall finishes, tiles, worktops, joinery materials, paint colours, and hardware — all presented with samples for your review.</div></div>
+    <div class="faq-item"><button class="faq-q">Do you design kitchens and bathrooms too? <svg class="faq-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Yes. Kitchen and bathroom design is a core part of our service — combining layout planning, appliance specification, cabinetry design, and finish selection.</div></div>
+    <div class="faq-item"><button class="faq-q">How long does the design process take? <svg class="faq-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">The design phase typically takes 3–6 weeks depending on project scope and the number of revisions. We'll confirm a timeline during the initial consultation.</div></div>
+    <div class="faq-item"><button class="faq-q">Can you work with my existing architect or builder? <svg class="faq-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Yes. We can work collaboratively with your existing team, or we can provide the complete design-and-build service through UK Renovation — whichever suits your project best.</div></div>
+  </div></div>
+</div></div></section>
+
+<section id="cta"><div class="cta-glow" aria-hidden="true"></div><div class="wrap"><div class="cta-inner au">
+  <div class="stag stag-dark" style="margin-bottom:10px"><span>Start Your Design Journey</span></div>
+  <h2 class="cta-title">Let's Create <em>Your Space</em> Together</h2>
+  <p class="cta-sub">Book a free design consultation. We'll discuss your vision, walk through possibilities, and outline a clear path forward — with no obligation.</p>
+  <div class="cta-actions"><a href="mailto:info@ukrenovation.co.uk" class="btn btn-gold">Email Us Today</a><a href="tel:07367365757" class="btn btn-outline-w">Call 07367 365 757</a></div>
+  <div class="cta-contacts">
+    <div class="cc-item"><div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2"/></svg></div><div><div class="cc-lbl">Phone</div><div class="cc-val"><a href="tel:07367365757">07367 365 757</a></div></div></div>
+    <div class="cc-item"><div class="cc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div><div><div class="cc-lbl">Email</div><div class="cc-val"><a href="mailto:info@ukrenovation.co.uk">info@ukrenovation.co.uk</a></div></div></div>
+    <div class="cc-item"><div class="cc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/></svg></div><div><div class="cc-lbl">Company No.</div><div class="cc-val">16352364</div></div></div>
+  </div>
+</div></div></section>
+
+<footer><div class="wrap">
+  <div class="footer-grid">
+    <div><div class="fb-name">UK Renovation Co.</div><div class="fb-reg">UK Renovation Services Ltd · Company No. 16352364</div><p class="fb-desc">Expert renovation, architecture, and interior design across London — delivered with precision, passion, and certified expertise.</p></div>
+    <div><div class="fc-ttl">Services</div><div class="fc-links"><a href="#">Interior Design &amp; Architecture</a><a href="#">Full Building Renovation</a><a href="#">Sectional Renovation</a><a href="#">New Build Construction</a></div></div>
+    <div><div class="fc-ttl">Areas</div><div class="fc-links"><a href="#">West London</a><a href="#">North London</a><a href="#">Central London</a><a href="#">Brentford &amp; Richmond</a></div></div>
+    <div><div class="fc-ttl">Contact</div><div class="fc-links"><a href="tel:07367365757">07367 365 757</a><a href="mailto:info@ukrenovation.co.uk">info@ukrenovation.co.uk</a><a href="index.html">Back to Home</a></div></div>
+  </div>
+  <div class="footer-btm"><div class="footer-copy">&copy; 2025 UK Renovation Services Limited. All rights reserved.</div></div>
+</div></footer>
+
+<script>
+const nav=document.getElementById('nav');const solidify=()=>nav.classList.toggle('solid',window.scrollY>40);window.addEventListener('scroll',solidify,{passive:true});solidify();
+const ham=document.getElementById('ham'),drawer=document.getElementById('drawer');ham.addEventListener('click',()=>{const o=drawer.classList.toggle('open');ham.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''});drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{drawer.classList.remove('open');ham.classList.remove('open');document.body.style.overflow=''}));
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:0.1,rootMargin:'0px 0px -28px 0px'});document.querySelectorAll('.au,.al,.ar').forEach(el=>io.observe(el));
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const ans=btn.nextElementSibling;const isOpen=btn.classList.contains('open');document.querySelectorAll('.faq-q.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open')});if(!isOpen){btn.classList.add('open');ans.classList.add('open')}})});
+</script>
+</body>
+</html>
